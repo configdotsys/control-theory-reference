@@ -189,10 +189,10 @@ $$
 \boxed{OS = 100 \cdot e^{-\frac{\pi \zeta}{\sqrt{1 - \zeta^2}}}}
 $$
 
-* **Damping ratio from %OS**:
+* **Damping ratio from % OS**:
 
 $$
-\boxed{\zeta = \frac{-\ln\left(\frac{\%OS}{100}\right)}{\sqrt{\pi^2 +\left[\ln\left(\frac{\%OS}{100}\right)\right]^2}}}
+\boxed{\zeta = \frac{-\ln\left(\frac{/% OS}{100}\right)}{\sqrt{\pi^2 +\left[\ln\left(\frac{OS}{100}\right)\right]^2}}}
 $$
 
 * **Settling time (2% criterion)**:

@@ -13,9 +13,11 @@ $$
 
 Therefore the pole is the negative reicprocal of the time constant $\tau$, $s=-\frac{1}{\tau} $
 The standard transfer function can be rewritten as:
+
 $$
 H(s) = \frac{\frac{K}{\tau}}{s+\frac{1}{\tau}} = \frac{K\ \omega_b}{s+\omega_b}
 $$
+
 Time constant $\tau$ is simply the reciprocal of the pole's location on the real axis.
 
 Break frequency is the frequency in (rad/s) where the Bode plot behavior changes. It is the **corner frequency** (also called the **3 dB frequency**) where the magnitude response starts to drop at -20 dB/decade in the Bode plot.

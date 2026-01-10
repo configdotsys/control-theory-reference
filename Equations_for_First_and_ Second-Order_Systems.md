@@ -186,7 +186,7 @@ $$
 * **Percent overshoot**:
 
 $$
-\boxed{&#37 OS = 100 \cdot e^{-\frac{\pi \zeta}{\sqrt{1 - \zeta^2}}}}
+\boxed{&#37 OS = 100 \cdot e^{-\frac{\pi \zeta}{\sqrt{1 - \zeta^2}}}}}
 $$
 
 * **Damping ratio from %OS**:

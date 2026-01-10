@@ -33,7 +33,7 @@ Break frequency is the frequency in (rad/s) where the Bode plot behavior changes
 #### a. Impulse Response
 
 $$
-h(t) = \frac{K}{\tau} e^frac{-t}{\tau} \cdot u(t)
+h(t) = \frac{K}{\tau} e^{-t/\tau} \cdot u(t)
 $$
 
 #### b. Step Response
@@ -48,27 +48,27 @@ $$
 
 * **Time constant**:
 
-  $$
-  \tau = \frac{1}{a} \quad \text{(time to reach 63.2\% of final value)}
-  $$
+$$
+\tau = \frac{1}{a} \quad \text{(time to reach 63.2\% of final value)}
+$$
 
 * **Settling time (2% criterion)**:
 
-  $$
-  t_s \approx 4\tau \quad \text{(for 2\% criterion)}
-  $$
+$$
+t_s \approx 4\tau \quad \text{(for 2\% criterion)}
+$$
 
 * **Rise time (90%)**:
 
-  $$
-  t_r \approx 2.2\tau
-  $$
+$$
+t_r \approx 2.2\tau
+$$
 
 * **Steady-state value**:
 
-  $$
-  y(\infty) = K
-  $$
+$$
+y(\infty) = K
+$$
 
 ---
 
@@ -167,45 +167,45 @@ $$
 
 * **Damped natural frequency**:
 
-  $$
-  \boxed{\omega_d = \omega_n \sqrt{1 - \zeta^2}}
-  $$
+$$
+\boxed{\omega_d = \omega_n \sqrt{1 - \zeta^2}}
+$$
 
 * **Exponential decay rate**:
 
-  $$
-  \boxed{\sigma = \zeta\omega_n}
-  $$
+$$
+\boxed{\sigma = \zeta\omega_n}
+$$
 
 * **Peak time**:
 
-  $$
-  \boxed{t_p = \frac{\pi}{\omega_d}}
-  $$
+$$
+\boxed{t_p = \frac{\pi}{\omega_d}}
+$$
 
 * **Percent overshoot**:
 
-  $$
-  \boxed{\%OS = 100 \cdot e^{-\frac{\pi \zeta}{\sqrt{1 - \zeta^2}}}}
-  $$
+$$
+\boxed{\%OS = 100 \cdot e^{-\frac{\pi \zeta}{\sqrt{1 - \zeta^2}}}}
+$$
 
 * **Damping ratio from %OS**:
 
-  $$
-  \boxed{\zeta = \frac{-\ln\left(\frac{\%OS}{100}\right)}{\sqrt{\pi^2 + \left[\ln\left(\frac{\%OS}{100}\right)\right]^2}}}
-  $$
+$$
+\boxed{\zeta = \frac{-\ln\left(\frac{\%OS}{100}\right)}{\sqrt{\pi^2 + \left[\ln\left(\frac{\%OS}{100}\right)\right]^2}}}
+$$
 
 * **Settling time (2% criterion)**:
 
-  $$
-  \boxed{t_s \approx \frac{4}{\zeta \omega_n}}
-  $$
+$$
+\boxed{t_s \approx \frac{4}{\zeta \omega_n}}
+$$
 
 * **Rise time**:
 
-  $$
-  \boxed{t_r \approx \frac{\pi - \phi}{\omega_d}, \quad \phi = \arccos(\zeta)}
-  $$
+$$
+\boxed{t_r \approx \frac{\pi - \phi}{\omega_d}, \quad \phi = \arccos(\zeta)}
+$$
 
 ---
 

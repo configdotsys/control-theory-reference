@@ -33,7 +33,7 @@ Break frequency is the frequency in (rad/s) where the Bode plot behavior changes
 #### a. Impulse Response
 
 $$
-h(t) = \frac{K}{\tau} e^{-t/\tau} \cdot u(t)
+h(t) = \frac{K}{\tau} e^frac{-t}{\tau} \cdot u(t)
 $$
 
 #### b. Step Response

@@ -1,4 +1,4 @@
-# engineering_notes
+# Control-theory_notes
 This repository contains selected technical notes developed while studying control theory.
 
 These documents are not tutorials or polished textbooks. They capture theory, reaasoning, and mental models.

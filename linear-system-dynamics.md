@@ -1,4 +1,4 @@
-# Control Theory Equations for First- and Second-Order Systems
+# Control Theory First- and Second-Order Linear System Dynamics
 
 ## 1. First-Order System
 

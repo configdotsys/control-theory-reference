@@ -32,9 +32,11 @@ One method of compensating for transient response, is to insert a differentiator
 The transient response of a system can be selected by choosing an appropriate closed-loop pole location on the s-plane. If this point is on the root locus, then a simple gain adjustment is all that is required in order to meet the transient response specification. If the closed-loop pole location is not on the root locus, then the root locus must be reshaped so that the compensated (new) root locus goes through the selected closed-loop pole location.
 
 One way to speed up the original system that generally works is to add a single zero to the forward path. This zero can be introduced into the forward path by including a factor in the compensator's numerator.
+
 $$
 \boxed{s+z_c}
 $$
+
 where
 - Zero at $-z_c$ is selected to put the design point on the root locus.
 - Active circuits are required to implement.
@@ -47,6 +49,7 @@ When the compensated, dominant, closed-loop poles have more negative real parts 
 Sometimes, an added benefit is the improvement in the steady-state error, even though lag compensation was not used. However, one must not assume that, in general, improvement in transient response always yields an improvement in steady-state error.
 
 ---
+
 #### Design for PD Compensation
 
 Evaluate the sum of angles from the open-loop poles and zeros to a design point, i.e., the closed-loop pole that yields the desired transient response. The difference between 180° and the calculated angle must be the angular contribution of the compensator zero. Trigonometry is then used to locate the position of the zero to yield the required difference in angle.
@@ -72,9 +75,11 @@ While the ideal derivative compensator can improve the transient response of the
 ### Lead Compensation
 
 When **passive networks** are used, a single zero cannot be produced; rather, a compensator zero and a pole result. However, if the pole is farther from the imaginary axis than the zero, the angular contribution of the compensator is still positive and thus approximates an equivalent single zero. In other words, the angular contribution of the compensator pole subtracts from the angular contribution of the zero. This deduction does not preclude the use of the compensator to improve transient response, since the **net angular contribution is positive**, just as for a single PD controller zero. The zero and pole can be introduced into the forward path by including a factor
+
 $$
 \boxed{\frac{s+z_c}{s+p_c}}
 $$
+
 where
 - $|p_c|>>|z_c|$, the pole is placed farther away from the imaginary axis than the zero.
 - Zero at -$z_c$ and pole $-p_c$ are selected to put the design point on the root locus.
@@ -84,9 +89,11 @@ where
 If we select a desired dominant, second-order pole on the s-plane, the sum of the angles from the uncompensated system’s poles and zeros to the design point can be found. The difference between $180\degree$ and the sum of the angles must be the angular contribution required of the compensator.
 
 For example, looking at the figure below, we see that
+
 $$
 \theta_2-\theta_1-\theta_3-\theta_4+\theta_5=\left(2k+1\right)180\degree
 $$
+
 where $\left(\theta_2-\theta_1\right)=\theta_c$ is the angular contribution of the lead compensator.
 
 ![Alt text](image-17.png)
@@ -139,9 +146,11 @@ To solve the problem, we also add a zero close to the pole at the origin, as sho
 ![Alt text](image-21.png)
 
 Now the angular contribution of the compensator zero and compensator pole cancel out, point A is still on the root locus, and the system type has been increased. Furthermore, the required gain at the dominant pole is about the same as before compensation, since the ratio of lengths from the compensator pole and the compensator zero is approximately unity. Thus, we have improved the steady-state error without appreciably affecting the transient response. This zero and pole at the origin can be introduced into the forward path by including a factor
+
 $$
 \boxed{\frac{s+z_c}{s}}
 $$
+
 where
 - $\frac{1}{s}$ increases sytem type, error becomes zero.
 - Zero at $-z_c$ is small and negative, and placed **very close** to the pole at the origin.
@@ -153,9 +162,11 @@ An open-loop pole will be placed at the origin to increase the system type and d
 
 #### PI Controller Design
 The transfer function of an ideal integral PD controller is
+
 $$
 \boxed{G_c(s)=K_1+\frac{K_2}{s}=\frac{K_1\left(s+\frac{K_2}{K_1}\right)}{s}}
 $$
+
 The value of the zero can be adjusted by varying $\frac{K_2}{K_1}$. In this implementation, the error and the integral of the error are fed forward to the plant, $G(s)$.
 
 It's block diagram is shown below.
@@ -178,18 +189,23 @@ Assume the uncompensated system shown in the figure below.
 ![Alt text](image-24.png)
 
 Recall that
+
 $$
 K_v=\lim_{s\rightarrow 0}sG(s)H(s)
 $$
+
 Therefore, the static error constant, $K_{vo}$, for the system is
+
 $$
 K_{vO}=\frac{Kz_1z_2\cdot\cdot\cdot}{p_1p_2\cdot\cdot\cdot}
 $$
 
 Assuming the lag compensator shown on the right in the figure below, the new static error constant is
+
 $$
 K_{vN}=\frac{(Kz_1z_2\cdot\cdot\cdot)(z_c)}{(p_1p_2\cdot\cdot\cdot)(p_c)}
 $$
+
 The figure below shows the effect on the root locus of adding the lag compensator. The uncompensated system’s root locus is shown on the left, where point $P$ is assumed to be the dominant pole. If the lag compensator pole and zero are close together, the angular contribution of the compensator to point $P$ is approximately zero degrees. Thus, in the figure below on the right, where the compensator has been added, point $P$ is still at approximately the same location on the compensated root locus.
 
 ![Alt text](image-25.png)
@@ -197,9 +213,11 @@ The figure below shows the effect on the root locus of adding the lag compensato
 What is the effect on the required gain, $K$? After inserting the compensator, we find that $K$ is virtually the same for the uncompensated and compensated systems, since the lengths of the vectors drawn from the lag compensator are approximately equal and all other vectors have not changed appreciably.
 
 Now, what improvement can we expect in the steady-state error? Since we established that the gain, $K$, is about the same for the uncompensated and compensated systems, we can substitute $K_{vO}$ into $K_{vN}$ and obtain
+
 $$
 K_{vN}=K_{vO}\left(\frac{z_c}{p_c}\right)>K_{vO}
 $$
+
 This equation shows that the improvement in the compensated system’s $K_v$ over the uncompensated system’s $K_v$ is equal to the ratio of the magnitude of the compensator zero to the compensator pole.
 
 ---
@@ -207,9 +225,11 @@ This equation shows that the improvement in the compensated system’s $K_v$ ove
 #### Design for Lag Compensation
 
 In order to keep the transient response unchanged, we know the compensator pole and zero must be close to each other. The only way the ratio of $z_c$ to $p_c$ can be large in order to yield an appreciable improvement in steady-state error and, simultaneously, have the compensator’s **pole and zero close to each other** to minimize the angular contribution, is to place the compensator’s **pole-zero pair close to the origin**. For example, the ratio of $z_c$ to $p_c$ can be equal to 10 if the pole is at $-0.001$ and the zero is at -$0.01$. Thus, the ratio is 10, yet the pole and zero are very close, and the angular contribution of the compensator is small. This zero and pole pair placed close to the origin can be introduced into the forward path by including a factor
+
 $$
 \boxed{\frac{(s+z_c)}{(s+p_c)}}
 $$
+
 where
 - $|z_c|>|p_c|$.
 - Pole at $-p_c$ is small and negative.
@@ -234,9 +254,11 @@ The design can use either active or passive compensators, as previously describe
 ### PID Controller Design
 
 The transfer function for a PID controller is
+
 $$
 G_c(s)=K_1+\frac{K_2}{s}+K_3s=\frac{K_1s+K_2+K_3s^2}{s}=\frac{K_3\left(s^2+\frac{K_1}{K_3}s+\frac{K_2}{K_3}\right)}{s}
 $$
+
 which has two zeros and a pole at the origin. One zero and the pole at the origin can be designed as the ideal integral compensator; the other zero can be designed as the ideal derivative compensator.
 
 The block diagram for a PID controller is shown below.

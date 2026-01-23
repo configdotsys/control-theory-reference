@@ -82,7 +82,7 @@ $$
 
 Notice that the factor $KG_2(s)$ appearing in the forward path cancels with the same factor introduced in the denominator of the composite feedback branch during block-diagram reduction.
 
-As a result, all poles and zeros associated with (G_2(s)) vanish from the equivalent loop gain.
+As a result, all poles and zeros associated with $G_2(s)$ vanish from the equivalent loop gain.
 
 - All poles/zeros of $G_2(s)$ have vanished.
 - The bracket $\left[K_fH_c(s)\,+\,KG_2(s)\right]$ carries a new pole-zero set (for a rate sensor on position, a real zero at $s=-K/K_f$).

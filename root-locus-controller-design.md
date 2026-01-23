@@ -201,7 +201,7 @@ Ideal integral compensation, with its pole on the origin, requires an active int
 use passive networks, the pole and zero are moved to the left, close to the origin, as shown in the figure below.
 
 <p align="center">
-  <img src="images/image-23.png" width="400">
+  <img src="images/image-23.png" width="250">
 </p>
 
 This placement of the pole, although it does not increase the system type, does yield an improvement in the static error constant over an uncompensated system.

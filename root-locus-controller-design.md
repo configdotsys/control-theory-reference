@@ -115,7 +115,7 @@ where $\left(\theta_2-\theta_1\right)=\theta_c$ is the angular contribution of t
 Realize that an infinite number of lead compensators could be used to meet the transient response requirement, as shown in the figure below.
 
 <p align="center">
-  <img src="images/image-18.png" width="400">
+  <img src="images/image-18.png" width="550">
 </p>
 
 How do the possible lead compensators differ? The differences are in the values of static error constants, the gain required to reach the design point on the compensated root locus, the difficulty in justifying a second-order approximation when the design is complete, and the ensuing transient response.

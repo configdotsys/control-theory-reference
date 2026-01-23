@@ -248,13 +248,13 @@ $$
 | ------------------------------------------- | ------------------ | ---------------------------------------------------------------------- |
 | $K_1G_1(s)$                                 | Yes            | Shape the root locus exactly as before.                                |
 | $G_2(s)$                                    | No (cancelled) | Replaced by the bracket term.                                          |
-| New bracket $\bigl[K_fH_c(s)+KG_2(s)\bigr]$ | Yes            | Introduces the “free” zero (and any poles/zeros contributed by $H_c$). |
+| New bracket $\bigl[K_fH_c(s)+KG_2(s)\bigr]$ | Yes            | Introduces the “free” zero (and any poles/zeros contributed by $H_c$. |
 ---
 
 So after the minor-loop reduction you are designing with a loop-gain model that contains
 
 $$
-(\text{poles/zeros of}\,\,K_1G_1)\,+\,(\text{poles/zeros of the new bracket term})
+(\text{poles/zeros of}\ \ K_1G_1)\ +\ (\text{poles/zeros of the new bracket term})
 $$
 
 **These combined sets control the reshaped root locus**.

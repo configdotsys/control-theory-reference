@@ -105,7 +105,7 @@ $$
 where $\left(\theta_2-\theta_1\right)=\theta_c$ is the angular contribution of the lead compensator.
 
 <p align="center">
-  <img src="images/image-17.png" width="400">
+  <img src="images/image-17.png" width="550">
 </p>
 
 ---
@@ -209,7 +209,7 @@ This placement of the pole, although it does not increase the system type, does 
 Assume the uncompensated system shown in the figure below.
 
 <p align="center">
-  <img src="images/image-24.png" width="400">
+  <img src="images/image-24.png" width="550">
 </p>
 
 Recall that
@@ -233,7 +233,7 @@ $$
 The figure below shows the effect on the root locus of adding the lag compensator. The uncompensated system’s root locus is shown on the left, where point $P$ is assumed to be the dominant pole. If the lag compensator pole and zero are close together, the angular contribution of the compensator to point $P$ is approximately zero degrees. Thus, in the figure below on the right, where the compensator has been added, point $P$ is still at approximately the same location on the compensated root locus.
 
 <p align="center">
-  <img src="images/image-25.png" width="400">
+  <img src="images/image-25.png" width="550">
 </p>
 
 What is the effect on the required gain, $K$? After inserting the compensator, we find that $K$ is virtually the same for the uncompensated and compensated systems, since the lengths of the vectors drawn from the lag compensator are approximately equal and all other vectors have not changed appreciably.

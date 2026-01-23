@@ -1,4 +1,4 @@
-# Root Locus–Based Controller Design
+# Root Locus Design - Cascade Compensation
 
 Systems that feed the error forward to the plant are called proportional control systems. Systems that feed the integral of the error to the plant are called integral control systems. Finally, systems that feed the derivative of the error to the plant are called derivative control systems.
 

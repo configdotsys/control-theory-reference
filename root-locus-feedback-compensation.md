@@ -308,7 +308,7 @@ $$
 $$
 
 <p align="center">
-  <img src="images/image-38.png" width="300">
+  <img src="images/image-38.png" width="350">
 </p>
 
 ---

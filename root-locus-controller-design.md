@@ -4,6 +4,10 @@ Systems that feed the error forward to the plant are called proportional control
 
 Two configurations of compensation are covered in this document: cascade compensation and feedback compensation. These methods are modeled in the figure below. With cascade compensation, the compensating network, $G_1(s)$, is placed at the low-power end of the forward path in cascade with the plant. If feedback compensation is used, the compensator, $H_1(s)$, is placed in the feedback path. Both methods change the open-loop poles and zeros, thereby creating a new root locus that goes through the desired closed-loop pole location.
 
+<p align="center">
+  <img src="images/image-33.png" width="600">
+</p>
+
 <img src="images/image-33.png" style="display:block; margin-left:auto; margin-right:auto;" width="600">
 
 ## Improving Transient Response

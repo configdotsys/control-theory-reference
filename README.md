@@ -1,6 +1,6 @@
 # Control Theory Notes and References
 
-This repository contains selected technical notes compiled as a working reference for control systems concepts.
+This repository contains selected technical reference notes compiled as a working reference for control systems concepts.
 
 The material is not intended to be a tutorial, textbook, or original theoretical contribution. Instead, it consolidates standard equations, interpretations, and mental models used when analyzing and implementing control systems.
 

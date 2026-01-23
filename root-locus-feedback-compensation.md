@@ -255,8 +255,8 @@ So after the minor-loop reduction you are designing with a loop-gain model that 
 
 $$
 (\text{poles/zeros of}\,\,K_1G_1)\,+\,(\text{poles/zeros of the new bracket term})
-
 $$
+
 **These combined sets control the reshaped root locus**.
 
 ___
@@ -449,29 +449,24 @@ We analyze the control system structure shown in the figure above, which contain
 
 ### Signal Definitions (from figure above):
 
-- $ R(s) $: Input
-- $ E(s) $: Output of the first summing junction (error signal)
-- $ X(s) $: Output of block $ K $
-- $ U(s) $: Output of block $ K_1 $
-- $ Y(s) $: Output of block $ G_1(s) $
-- $ C(s) $: Final output (output of $ G_2(s) $)
+- $ R(s)$: Input
+- $ E(s)$: Output of the first summing junction (error signal)
+- $ X(s)$: Output of block $K$
+- $ U(s)$: Output of block  K_1$
+- $ Y(s)$: Output of block  G_1(s)$
+- $C(s)$: Final output (output of $G_2(s)$)
 
 ### Block Order:
 
 $$
 R(s)
-\rightarrow \boxed{-}
-\rightarrow \boxed{K}
-\rightarrow \boxed{K_1}
-\rightarrow \boxed{G_1(s)}
-\rightarrow \boxed{G_2(s)}
-\rightarrow C(s)
+\rightarrow \boxed{-}\rightarrow \boxed{K}\rightarrow \boxed{K_1}\rightarrow \boxed{G_1(s)}\rightarrow\boxed{G_2(s)}\rightarrow C(s)
 $$
 
 ### Feedback Paths:
 
-- **Minor loop**: $ K_f H_c(s) $, from $ Y(s) $ to subtractor before $ K_1 $
-- **Major loop**: Unity feedback from $ C(s) $ to the front
+- **Minor loop**: $K_f H_c(s)$, from $Y(s)$ to subtractor before $K_1$
+- **Major loop**: Unity feedback from $C(s)$ to the front
 
 ---
 
@@ -479,10 +474,10 @@ $$
 
 We treat the minor loop as an isolated single-loop feedback system with:
 
-- **Forward path**: $ K_1 G_1(s) $
-- **Feedback path**: $ K_f H_c(s) $
-- **Input**: $ X(s) $ (output of gain block $ K $)
-- **Output**: $ Y(s) $
+- **Forward path**: $K_1 G_1(s)$
+- **Feedback path**: $K_f H_c(s)$
+- **Input**: $X(s) $(output of gain block $K$)
+- **Output**: $Y(s)$
 
 Using the standard negative feedback formula:
 
@@ -498,10 +493,10 @@ $$
 
 Recall that:
 
-- $ X(s) = K [R(s) - C(s)] $
-- $ C(s) = G_2(s) Y(s) $
+- $X(s) = K [R(s) - C(s)]$
+- $C(s) = G_2(s) Y(s)$
 
-Substitute for $ Y(s) $:
+Substitute for $Y(s)$:
 
 $$
 C(s) = G_2(s) \cdot \frac{K_1 G_1(s)}{1 + K_1 G_1(s) K_f H_c(s)} \cdot K [R(s) - C(s)]
@@ -530,7 +525,7 @@ C(s) \cdot \left[1 + K_1 G_1(s) K_f H_c(s)\right] + K K_1 G_1(s) G_2(s) \cdot C(
 = K K_1 G_1(s) G_2(s) \cdot R(s)
 $$
 
-Group all $ C(s) $ terms on the left:
+Group all $C(s)$ terms on the left:
 
 $$
 C(s) \cdot \left[1 + K_1 G_1(s) K_f H_c(s) + K K_1 G_1(s) G_2(s)\right]
@@ -544,9 +539,7 @@ $$
 Now divide both sides by the bracketed term:
 
 $$
-\frac{C(s)}{R(s)} =
-\frac{K K_1 G_1(s) G_2(s)}
-{1 + K_1 G_1(s) K_f H_c(s) + K K_1 G_1(s) G_2(s)}
+\frac{C(s)}{R(s)} =\frac{K K_1 G_1(s) G_2(s)}{1 + K_1 G_1(s) K_f H_c(s) + K K_1 G_1(s) G_2(s)}
 $$
 
 ---
@@ -556,9 +549,7 @@ $$
 Group the denominator:
 
 $$
-\frac{C(s)}{R(s)} =
-\frac{K K_1 G_1(s) G_2(s)}
-{1 + K_1 G_1(s) [K_f H_c(s) + K G_2(s)]}
+\frac{C(s)}{R(s)} =\frac{K K_1 G_1(s) G_2(s)}{1 + K_1 G_1(s) [K_f H_c(s) + K G_2(s)]}
 $$
 
 ---
@@ -568,9 +559,7 @@ $$
 ### Closed-Loop Transfer Function:
 
 $$
-T(s) = \frac{C(s)}{R(s)} =
-\frac{K K_1 G_1(s) G_2(s)}
-{1 + K_1 G_1(s) \left[K_f H_c(s) + K G_2(s)\right]}
+T(s) = \frac{C(s)}{R(s)} =\frac{K K_1 G_1(s) G_2(s)}{1 + K_1 G_1(s) \left[K_f H_c(s) + K G_2(s)\right]}
 $$
 
 ### Open-Loop Transfer Function (for root locus):
@@ -583,7 +572,7 @@ $$
 
 ### Notes:
 
-- Grouping the $ C(s) $ terms means moving all terms involving $ C(s) $ to one side of the equation, factoring them, and solving for $ \frac{C(s)}{R(s)} $. This gives the characteristic equation in the denominator.
+- Grouping the $C(s)$ terms means moving all terms involving $C(s)$ to one side of the equation, factoring them, and solving for $\frac{C(s)}{R(s)}$. This gives the characteristic equation in the denominator.
 - This “inside-out” approach (reduce inner loop first) is preferred in professional control design. It reveals how inner-loop compensation (i.e., rate feedback) shapes the effective plant for the outer loop.
 
 ---

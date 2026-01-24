@@ -1,365 +1,350 @@
 # Root Locus Design - Cascade Compensation
 
-Systems that feed the error forward to the plant are called proportional control systems. Systems that feed the integral of the error to the plant are called integral control systems. Finally, systems that feed the derivative of the error to the plant are called derivative control systems.
+Systems that apply the error signal directly to the plant implement **proportional control**.
 
-Two configurations of compensation are covered in this document: cascade compensation and feedback compensation. These methods are modeled in the figure below. With cascade compensation, the compensating network, $G_1(s)$, is placed at the low-power end of the forward path in cascade with the plant. If feedback compensation is used, the compensator, $H_1(s)$, is placed in the feedback path. Both methods change the open-loop poles and zeros, thereby creating a new root locus that goes through the desired closed-loop pole location.
+Systems that apply the time integral of the error implement **integral control**.
+
+Systems that apply the time derivative of the error implement **derivative control**.
+
+These control actions are not introduced as separate controllers here, but as elements that may be incorporated into a compensating network.
+
+Two compensation configurations are considered in this document: **cascade compensation** and **feedback compensation**.
+
+In cascade compensation, the compensating network $G_1(s)$ is inserted in series with the plant at the low-power end of the forward path. In feedback compensation, the compensating network $H_1(s)$ is placed in the feedback path.
+
+In both cases, the compensator alters the open-loop pole–zero configuration of the system. This modification produces a new root locus whose geometry differs from that of the uncompensated plant and can be shaped to pass through a desired closed-loop pole location.
 
 <p align="center">
-  <img src="images/image-33.png" width="400">
+  <img src="images/cascade-feedback-compare.png" width="400">
 </p>
 
 ## Improving Transient Response
-The root locus typically allows us to choose the proper loop gain to meet a transient response specification. As the gain is varied, we move through different regions of response. Setting the gain at a particular value yields the transient response dictated by the poles at that point on the root locus. Thus, **we are limited to those responses that exist along the root locus**.
+The root locus provides a mechanism for selecting loop gain to satisfy transient-response requirements. As the gain is varied, the closed-loop poles move along the root locus, and each pole location corresponds to a particular transient behavior. Selecting a specific gain therefore produces the response associated with the poles at that location.
 
-Flexibility in the design of a desired transient response can be increased if we can design for transient responses that are not on the root locus.
+This approach restricts the achievable transient responses to those that lie directly on the root locus.
 
-The figure below illustrates the concept.
-
-<p align="center">
-  <img src="images/image-15.png" width="400">
-</p>
-
-Assume that the desired transient response, defined by percent overshoot and settling time, is represented by point B. Unfortunately, on the current root locus at the specified percent overshoot, we only can obtain the settling time represented by point A after a simple gain adjustment. Thus, our goal is to speed up the response at A to that of B, without affecting the percent overshoot. This increase in speed cannot be accomplished by a simple gain adjustment, since point B does not lie on the root locus.
-
-The figure below illustrates the improvement in the transient response we seek: The faster response has the same percent overshoot as the slower response.
+Additional flexibility becomes available if the desired transient response corresponds to pole locations that do not lie on the existing root locus.
 
 <p align="center">
-  <img src="images/image-16.png" width="400">
+  <img src="images/shifting-root-locus.png" width="400">
 </p>
 
-One way to solve our problem is to replace the existing system with a system whose root locus intersects the desired design point, B. Unfortunately, this replacement is expensive and counterproductive. Most systems are chosen for characteristics other than transient response. For example, an elevator cage and motor are chosen for speed and power. Components chosen for their transient response may not necessarily meet, for example, power requirements.
+Conceptually, this situation can be represented by two candidate pole locations. Point A lies on the current root locus and represents the fastest response achievable through gain adjustment alone for a given percent overshoot. Point B represents a faster desired response with the same percent overshoot but improved settling time. Because point B does not lie on the root locus, it cannot be reached by gain variation alone.
 
-Rather than change the existing system, we augment, or compensate, the system with additional poles and zeros, so that the compensated system has a root locus that goes through the desired pole location for some value of gain. One of the advantages of compensating a system in this way is that additional poles and zeros can be added at the low-power end of the system before the plant. Addition of compensating poles and zeros need not interfere with the power output requirements of the system or present additional load or design problems. The compensating poles and zeros can be generated with a passive or an active network.
+The design objective is therefore to increase the response speed associated with point A to that of point B without altering percent overshoot.
 
-One method of compensating for transient response, is to insert a differentiator in the forward path in parallel with the gain. We can visualize the operation of the differentiator with the following example. Assuming a position control with a step input, we note that the error undergoes an initial large *change*. Differentiating this *rapid change* yields a large signal that drives the plant. The output from the differentiator is much larger than the output from the pure gain. This large, initial input to the plant produces a faster response. As the error approaches its final value, its derivative approaches zero, and the output from the differentiator becomes negligible compared to the output from the gain.
+Modifying the physical plant to obtain a different root locus is generally impractical. Physical systems are selected based on constraints such as power, torque, efficiency, size, or cost, not solely on transient response. Modifying major plant components in pursuit of improved dynamics is typically expensive and counterproductive.
 
-### Ideal Derivative Compensation (PD Compensator)
+Instead, the existing system is augmented through compensation. Additional poles and zeros are introduced so that the compensated system exhibits a modified root locus that passes through the desired pole location. These compensating elements are placed at the low-power end of the forward path, where they do not interfere with actuator power requirements or impose additional loading constraints. Such compensation can be implemented using passive or active networks.
 
-The transient response of a system can be selected by choosing an appropriate closed-loop pole location on the s-plane. If this point is on the root locus, then a simple gain adjustment is all that is required in order to meet the transient response specification. If the closed-loop pole location is not on the root locus, then the root locus must be reshaped so that the compensated (new) root locus goes through the selected closed-loop pole location.
+One approach to improving transient response is the introduction of derivative action in the forward path. For a step input in a position-control system, the error experiences a rapid initial change. Differentiation of this change produces a large initial control signal that momentarily dominates the control input. This increased early drive accelerates system motion and reduces settling time. As the error approaches its steady-state value, its rate of change diminishes, and the contribution of the derivative term becomes negligible relative to the proportional action.
 
-One way to speed up the original system that generally works is to add a single zero to the forward path. This zero can be introduced into the forward path by including a factor in the compensator's numerator.
+## Ideal Derivative Compensation (PD Compensator)
+
+The transient response of a system is determined by the location of the dominant closed-loop poles in the s-plane. When the desired pole location lies on the root locus, the transient response can be achieved through adjustment of the loop gain alone.
+
+If the desired closed-loop pole does not lie on the root locus, gain variation is insufficient. In this case, the open-loop pole–zero configuration must be modified so that the compensated root locus passes through the selected design point.
+
+A common method for accelerating system response is the introduction of a single zero in the forward path. This is accomplished by adding a factor to the compensator numerator,
 
 $$
-\boxed{s+z_c}
+\boxed{s + z_c}
 $$
 
-where
-- Zero at $-z_c$ is selected to put the design point on the root locus.
-- Active circuits are required to implement.
-- Can cause noise and saturation.
+where the compensator zero at $-z_c$ is selected such that the desired closed-loop pole location satisfies the root-locus angle condition.
 
-Judicious choice of the position of the compensator zero can quicken the response over the uncompensated system. In summary, transient responses unattainable by a simple gain adjustment can be obtained by augmenting the system’s poles and zeros with an ideal derivative compensator.
+This form of compensation requires active circuitry and may introduce sensitivity to noise and actuator saturation. Nevertheless, appropriate placement of the compensator zero can significantly improve transient response relative to the uncompensated system.
 
-When the compensated, dominant, closed-loop poles have more negative real parts $(-\sigma)$ than the uncompensated, dominant, closed-loop poles, the settling times $(T_s)$, and peak times $(T_p)$ will be shorter.
+By augmenting the system with an ideal derivative compensator, transient responses that cannot be achieved through gain adjustment alone become attainable.
 
-Sometimes, an added benefit is the improvement in the steady-state error, even though lag compensation was not used. However, one must not assume that, in general, improvement in transient response always yields an improvement in steady-state error.
+When the compensated dominant closed-loop poles have more negative real parts than those of the uncompensated system, the resulting settling time $T_s$ and peak time $T_p$ are reduced.
+
+In some cases, steady-state error may also improve, even though lag compensation is not explicitly employed. However, such improvement is not guaranteed and should not be assumed as a general consequence of derivative compensation.
 
 ---
 
-#### Design for PD Compensation
+### Design for PD Compensation
 
-Evaluate the sum of angles from the open-loop poles and zeros to a design point, i.e., the closed-loop pole that yields the desired transient response. The difference between 180° and the calculated angle must be the angular contribution of the compensator zero. Trigonometry is then used to locate the position of the zero to yield the required difference in angle.
+The compensator zero is selected using the root-locus angle condition evaluated at the desired closed-loop pole location.
 
----
-#### PD Controller Design
+The angular contributions from all existing open-loop poles and zeros to the design point are computed. The difference between the required angle of $180^\circ$ and the computed sum determines the angular contribution that must be supplied by the compensator zero.
 
-Once we decide on the location of the compensating zero, the ideal derivative compensator used to improve the transient response is implemented with a proportional-plus-derivative (PD) controller.
-
-The transfer function of the PD controller is
-$$
-\boxed{G_c(s) = K_2s+K_1=K_2\left(s+\frac{K_1}{K_2}\right)}
-$$
-$\frac{K_1}{K_2}$ is chosen to equal the negative of the compensator zero, and $K_2$ is chosen to contribute to the required loop-gain value.
-
-The PD controller's block diagram is
-
-<p align="center">
-  <img src="images/image-14.png" width="400">
-</p>
-
-While the ideal derivative compensator can improve the transient response of the system, it has two drawbacks. First, **it requires an active circuit to perform the differentiation**. Second, differentiation is a noisy process: The level of the noise is low, but the frequency of the noise is high compared to the signal. Differentiation of high frequencies can lead to large unwanted signals or saturation of amplifers and other components. The **lead compensator is a passive network** used to overcome the disadvantages of ideal differentiation and still retain the ability to improve the transient response.
+Trigonometric relationships are then used to determine the location of the zero that provides the required angle contribution.
 
 ---
+
+### PD Controller Design
+
+Once the compensating zero has been selected, the ideal derivative compensator is implemented using a proportional–derivative (PD) controller.
+
+The PD controller transfer function is
+
+$$
+\boxed{G_c(s) = K_2 s + K_1= K_2\left(s + \frac{K_1}{K_2}\right)}
+$$
+
+The ratio $\frac{K_1}{K_2}$ is chosen to equal the negative of the compensator zero location, while $K_2$ is selected to satisfy the required loop gain.
+
+Although ideal derivative compensation improves transient response, it has practical drawbacks. Differentiation requires active circuitry and amplifies high-frequency components of the signal. Even when noise amplitude is small, its high-frequency content can produce large derivative outputs, potentially leading to saturation or undesirable actuator behavior.
+
+To mitigate these issues, lead compensators are commonly used in practice. Lead compensation provides phase advance similar to derivative action while avoiding the disadvantages of ideal differentiation.
+
+---
+
 ### Lead Compensation
 
-When **passive networks** are used, a single zero cannot be produced; rather, a compensator zero and a pole result. However, if the pole is farther from the imaginary axis than the zero, the angular contribution of the compensator is still positive and thus approximates an equivalent single zero. In other words, the angular contribution of the compensator pole subtracts from the angular contribution of the zero. This deduction does not preclude the use of the compensator to improve transient response, since the **net angular contribution is positive**, just as for a single PD controller zero. The zero and pole can be introduced into the forward path by including a factor
+When passive networks are used, it is not possible to realize a compensator containing a single zero alone. Instead, the network introduces both a zero and a pole. If the compensator pole is located farther from the imaginary axis than the compensator zero, the net angular contribution remains positive and approximates the effect of a single zero.
+
+In this configuration, the angular contribution of the compensator pole subtracts from that of the zero. As long as the zero dominates, the overall effect remains equivalent to derivative action. This does not prevent the compensator from improving transient response, since the resulting net angle contribution is positive, similar to that of an ideal PD controller.
+
+The compensator is introduced into the forward path through the factor
 
 $$
-\boxed{\frac{s+z_c}{s+p_c}}
+\boxed{\frac{s + z_c}{s + p_c}}
 $$
 
-where
-- $|p_c|>>|z_c|$, the pole is placed farther away from the imaginary axis than the zero.
-- Zero at -$z_c$ and pole $-p_c$ are selected to put the design point on the root locus.
-- Pole at $-p_c$ is more negative than zero at $-z_c$.
-- Active circuits are **not required** to implement.
+where:
 
-If we select a desired dominant, second-order pole on the s-plane, the sum of the angles from the uncompensated system’s poles and zeros to the design point can be found. The difference between $180\degree$ and the sum of the angles must be the angular contribution required of the compensator.
+* $|p_c| \gg |z_c|$, placing the pole farther from the imaginary axis than the zero
+* the zero at $-z_c$ and pole at $-p_c$ are selected so that the desired design point satisfies the root-locus condition
+* the pole at $-p_c$ is more negative than the zero at $-z_c$
+* passive components may be used for implementation
 
-For example, looking at the figure below, we see that
+If a desired dominant second-order pole is selected on the s-plane, the angular contributions from the uncompensated system poles and zeros to that design point can be computed. The difference between $180^\circ$ and the resulting angle sum defines the angular contribution that must be supplied by the compensator.
+
+For example, at the selected design point,
 
 $$
-\theta_2-\theta_1-\theta_3-\theta_4+\theta_5=\left(2k+1\right)180\degree
+\theta_2 - \theta_1 - \theta_3 - \theta_4 + \theta_5= (2k + 1)180^\circ
 $$
 
-where $\left(\theta_2-\theta_1\right)=\theta_c$ is the angular contribution of the lead compensator.
-
-<p align="center">
-  <img src="images/image-17.png" width="550">
-</p>
+where the quantity $\theta_2 - \theta_1 = \theta_c$ represents the angular contribution provided by the lead compensator.
 
 ---
 
 #### Design for Lead Compensation
 
-Realize that an infinite number of lead compensators could be used to meet the transient response requirement, as shown in the figure below.
+An infinite number of lead compensators may satisfy a given transient-response requirement. Each choice corresponds to a different combination of compensator pole and zero locations.
 
-<p align="center">
-  <img src="images/image-18.png" width="550">
-</p>
+Although multiple solutions exist, they differ in several practical respects, including:
 
-How do the possible lead compensators differ? The differences are in the values of static error constants, the gain required to reach the design point on the compensated root locus, the difficulty in justifying a second-order approximation when the design is complete, and the ensuing transient response.
+* resulting static error constants
+* gain required to reach the design point on the compensated root locus
+* validity of the second-order dominant-pole approximation
+* overall transient-response characteristics
 
-For design, we arbitrarily select either a lead compensator pole or zero and find the angular contribution at the design point of this pole or zero along with the system’s open-loop poles and zeros. The difference between this angle and 180° is the required contribution of the remaining compensator pole or zero.
+During design, either the compensator pole or zero is selected arbitrarily. The angular contribution of this selected element is evaluated at the design point along with those of the existing system poles and zeros. The difference between the resulting angle sum and $180^\circ$ determines the required contribution of the remaining compensator element.
 
-___
+---
 
 ## Improving Steady-State Error
 
-When the system gain is adjusted to meet the transient response specification, steady-state error performance deteriorates, since both the transient response and the static error constant are related to the gain. The higher the gain, the smaller the steady-state error, but the larger the percent overshoot. On the other hand, reducing gain to reduce overshoot increases the steady-state error.
+When system gain is adjusted to satisfy transient-response requirements, steady-state error performance is affected. Both transient behavior and static error constants depend on loop gain.
 
-Steady-state error can be improved by adding an open-loop pole at the origin in the forward path, thus increasing the system type and driving the associated steady-state error to zero. This additional pole at the origin requires an integrator for its realization.
+Increasing gain reduces steady-state error but generally increases percent overshoot. Conversely, reducing gain to limit overshoot leads to increased steady-state error. This coupling creates a tradeoff that cannot be resolved through gain adjustment alone.
 
-Transient response is improved with the addition of differentiation, and **steady-state error is improved with the addition of integration** in
-the forward path.
+Steady-state error can be improved by introducing an additional open-loop pole at the origin in the forward path. This increases the system type and forces the corresponding steady-state error to zero. Implementation of this pole requires an integrator.
+
+In summary:
+
+* differentiation in the forward path primarily improves transient response
+* integration in the forward path primarily improves steady-state accuracy
 
 ---
 
 ### Ideal Integral Compensation
 
-Ideal integral compensation, uses a pure integrator to place an open-loop, forward-path pole at the origin, thus increasing the system type and reducing the error to zero.
+Ideal integral compensation introduces a pure integrator in the forward path, placing an open-loop pole at the origin. This increases the system type and reduces steady-state error.
 
-For example, a Type 0 system responding to a step input with a finite error responds with zero error if the system type is increased by one. Active circuits can be used to place poles at the origin.
+For example, a Type 0 system responding to a step input exhibits a finite steady-state error. Increasing the system type by one eliminates this error. In practice, active circuitry is required to realize poles at the origin.
 
 ---
 
 #### Design for PI Compensation
 
-To see how to improve the steady-state error without affecting the transient response, look at the figure below. Here we have a system operating with a desirable transient response generated by the closed-loop poles at A.
+Consider a system operating with a satisfactory transient response, represented by dominant closed-loop poles at point A.
 
-<p align="center">
-  <img src="images/image-19.png" width="400">
-</p>
+If a pole is added at the origin to increase system type, the angular contribution of the open-loop poles and zeros at point A is no longer equal to $180^\circ$. As a result, the root locus no longer passes through the original design point, and the desired transient response is disturbed.
 
-If we add a pole at the origin to increase the system type, the angular contribution of the open-loop poles at point A is no longer $180\degree$, and the root locus no longer goes through point A, as shown in the figure below.
+To restore the original dominant pole location, a compensator zero is placed near the pole at the origin. When properly positioned, the angular contribution of the compensator zero approximately cancels that of the compensator pole.
 
-<p align="center">
-  <img src="images/image-20.png" width="400">
-</p>
+With this arrangement:
 
-To solve the problem, we also add a zero close to the pole at the origin, as shown in the figure below.
+* the dominant closed-loop poles remain near their original locations
+* the transient response is largely preserved
+* the system type is increased
 
-<p align="center">
-  <img src="images/image-21.png" width="400">
-</p>
+Because the compensator pole and zero are placed close together, the ratio of their distances to the dominant pole is approximately unity. Consequently, the gain required to reach the design point remains nearly unchanged.
 
-Now the angular contribution of the compensator zero and compensator pole cancel out, point A is still on the root locus, and the system type has been increased. Furthermore, the required gain at the dominant pole is about the same as before compensation, since the ratio of lengths from the compensator pole and the compensator zero is approximately unity. Thus, we have improved the steady-state error without appreciably affecting the transient response. This zero and pole at the origin can be introduced into the forward path by including a factor
+This compensation is introduced into the forward path using
 
 $$
-\boxed{\frac{s+z_c}{s}}
+\boxed{\frac{s + z_c}{s}}
 $$
 
-where
-- $\frac{1}{s}$ increases sytem type, error becomes zero.
-- Zero at $-z_c$ is small and negative, and placed **very close** to the pole at the origin.
-- Active circuits are required to implement.
+where:
 
-An open-loop pole will be placed at the origin to increase the system type and drive the steady-state error to zero. An open-loop zero will be placed very close to the open-loop pole at the origin so that the original closed-loop poles on the original root locus still remain at approximately the same points on the compensated root locus (so the added pole doesn't affect the transient response).
+* the pole at the origin increases system type and drives steady-state error to zero
+* the zero at $-z_c$ is small, negative, and placed very close to the origin
+* active circuitry is required for implementation
+
+In effect, an integrator is added to improve steady-state accuracy, while a nearby zero is introduced to prevent degradation of the transient response.
 
 ---
 
 #### PI Controller Design
-The transfer function of an ideal integral PD controller is
+
+The transfer function of an ideal proportional–integral controller is
 
 $$
-\boxed{G_c(s)=K_1+\frac{K_2}{s}=\frac{K_1\left(s+\frac{K_2}{K_1}\right)}{s}}
+\boxed{G_c(s)= K_1 + \frac{K_2}{s}= \frac{K_1\left(s + \frac{K_2}{K_1}\right)}{s}}
 $$
 
-The value of the zero can be adjusted by varying $\frac{K_2}{K_1}$. In this implementation, the error and the integral of the error are fed forward to the plant, $G(s)$.
-
-It's block diagram is shown below.
-
-<p align="center">
-  <img src="images/image-22.png" width="400">
-</p>
+The zero location is adjusted through the ratio $\frac{K_2}{K_1}$. In this configuration, both the error and the integral of the error are applied to the plant $G(s)$.
 
 ---
 
 ### Lag Compensation
 
-Ideal integral compensation, with its pole on the origin, requires an active integrator. If we
-use passive networks, the pole and zero are moved to the left, close to the origin, as shown in the figure below.
+Ideal integral compensation requires a pole at the origin, which must be implemented using an active integrator. When passive networks are used, the pole and zero are shifted slightly to the left of the origin rather than being placed exactly at it.
 
-<p align="center">
-  <img src="images/image-23.png" width="200">
-</p>
+Although this configuration does not increase system type, it does improve the static error constant relative to the uncompensated system.
 
-This placement of the pole, although it does not increase the system type, does yield an improvement in the static error constant over an uncompensated system.
-
-Assume the uncompensated system shown in the figure below.
-
-<p align="center">
-  <img src="images/image-24.png" width="550">
-</p>
-
-Recall that
+Consider an uncompensated system with velocity error constant
 
 $$
-K_v=\lim_{s\rightarrow 0}sG(s)H(s)
+K_v = \lim_{s \to 0} s G(s)H(s)
 $$
 
-Therefore, the static error constant, $K_{vo}$, for the system is
+For this system, the static error constant may be written as
 
 $$
-K_{vO}=\frac{Kz_1z_2\cdot\cdot\cdot}{p_1p_2\cdot\cdot\cdot}
+K_{vO} = \frac{K z_1 z_2 \cdots}{p_1 p_2 \cdots}
 $$
 
-Assuming the lag compensator shown on the right in the figure below, the new static error constant is
+When a lag compensator is added in the forward path, the new static error constant becomes
 
 $$
-K_{vN}=\frac{(Kz_1z_2\cdot\cdot\cdot)(z_c)}{(p_1p_2\cdot\cdot\cdot)(p_c)}
+K_{vN} = \frac{(K z_1 z_2 \cdots)(z_c)}{(p_1 p_2 \cdots)(p_c)}
 $$
 
-The figure below shows the effect on the root locus of adding the lag compensator. The uncompensated system’s root locus is shown on the left, where point $P$ is assumed to be the dominant pole. If the lag compensator pole and zero are close together, the angular contribution of the compensator to point $P$ is approximately zero degrees. Thus, in the figure below on the right, where the compensator has been added, point $P$ is still at approximately the same location on the compensated root locus.
+If the compensator pole and zero are placed close together, their angular contributions at the dominant closed-loop pole are approximately equal and opposite. As a result, the net angular contribution of the compensator is near zero, and the dominant closed-loop pole remains at approximately the same location on the compensated root locus.
 
-<p align="center">
-  <img src="images/image-25.png" width="550">
-</p>
+Because the pole–zero pair is closely spaced, the required loop gain is also approximately unchanged. The vector lengths associated with the compensator pole and zero are nearly equal, and the remaining vectors are unaffected.
 
-What is the effect on the required gain, $K$? After inserting the compensator, we find that $K$ is virtually the same for the uncompensated and compensated systems, since the lengths of the vectors drawn from the lag compensator are approximately equal and all other vectors have not changed appreciably.
-
-Now, what improvement can we expect in the steady-state error? Since we established that the gain, $K$, is about the same for the uncompensated and compensated systems, we can substitute $K_{vO}$ into $K_{vN}$ and obtain
+The improvement in steady-state error can therefore be evaluated directly. Substituting $K_{vO}$ into the compensated expression yields
 
 $$
-K_{vN}=K_{vO}\left(\frac{z_c}{p_c}\right)>K_{vO}
+K_{vN}= K_{vO}\left(\frac{z_c}{p_c}\right)
 $$
 
-This equation shows that the improvement in the compensated system’s $K_v$ over the uncompensated system’s $K_v$ is equal to the ratio of the magnitude of the compensator zero to the compensator pole.
+This result shows that the improvement in the static error constant is proportional to the ratio of the compensator zero magnitude to the compensator pole magnitude.
 
 ---
 
 #### Design for Lag Compensation
 
-In order to keep the transient response unchanged, we know the compensator pole and zero must be close to each other. The only way the ratio of $z_c$ to $p_c$ can be large in order to yield an appreciable improvement in steady-state error and, simultaneously, have the compensator’s **pole and zero close to each other** to minimize the angular contribution, is to place the compensator’s **pole-zero pair close to the origin**. For example, the ratio of $z_c$ to $p_c$ can be equal to 10 if the pole is at $-0.001$ and the zero is at -$0.01$. Thus, the ratio is 10, yet the pole and zero are very close, and the angular contribution of the compensator is small. This zero and pole pair placed close to the origin can be introduced into the forward path by including a factor
+To preserve transient response, the compensator pole and zero must be placed close to one another so that their angular contributions cancel.
+
+At the same time, significant improvement in steady-state error requires the ratio $\frac{z_c}{p_c}$ to be large. These two requirements can be satisfied simultaneously by placing both the pole and zero close to the origin.
+
+For example, a pole at -0.001 and a zero at -0.01 yields a ratio of 10, while maintaining close spacing between the two locations. In this case, the angular contribution of the compensator remains small, and transient response is minimally affected.
+
+This compensator is introduced into the forward path using
 
 $$
-\boxed{\frac{(s+z_c)}{(s+p_c)}}
+\boxed{\frac{s + z_c}{s + p_c}}
 $$
 
-where
-- $|z_c|>|p_c|$.
-- Pole at $-p_c$ is small and negative.
-- Zero at $-z_c$ is close to, and to the left of, the pole at $-p_c$.
-- Error is improved but not driven to zero.
-- Active circuits are not required to implement.
+where:
 
-In conclusion, although the ideal compensator drives the steady-state error to zero, a lag compensator with a pole that is not at the origin will improve the static error constant by a factor equal to $\frac{zc}{pc}$. There also will be a minimal effect upon the transient response if the pole-zero pair of the compensator is placed close to the origin.
+* ( |z_c| > |p_c| )
+* the pole at $-p_c$ is small and negative
+* the zero at $-z_c$ is placed slightly to the left of the pole
+* steady-state error is reduced but not driven to zero
+* passive components may be used for implementation
+
+In summary, while ideal integral compensation eliminates steady-state error entirely, lag compensation improves the static error constant by a factor of $\frac{z_c}{p_c}$. When the compensator pole–zero pair is placed close to the origin, this improvement is achieved with minimal impact on transient response.
 
 ---
 
 ## Improving Both Steady-State Error and Transient Response
 
-Combine the design techniques covered above to obtain improvement in steady-state error and transient response independently. Basically, we first improve the transient response by using methods of PD or Lead compensation, then we improve the steady-state error of this compensated system by applying the methods of PI or Lag compensation. A disadvantage of this approach is the slight decrease in the speed of the response when the steady-state error is improved.
+The compensation techniques discussed previously may be combined to improve transient response and steady-state error independently.
 
-As an alternative, we can improve the steady-state error first and then follow with the design to improve the transient response. A disadvantage of this approach is that the improvement in transient response in some cases yields deterioration in the improvement of the steady-state error, which was designed first. In other cases, the improvement in transient response yields further improvement in steady-state errors. Thus, a system can be overdesigned with respect to steady-state errors. Overdesign is usually not a problem unless it affects cost or produces other design problems. In this document, we first design for transient response and then design for steady-state error.
+A common approach is to first shape the transient response using derivative-based methods, such as PD or lead compensation. Once acceptable transient behavior has been achieved, steady-state error performance is improved by applying integral-based methods, such as PI or lag compensation. A drawback of this sequence is a slight reduction in response speed when steady-state accuracy is increased.
 
-The design can use either active or passive compensators, as previously described. If we design an active PD controller followed by an active PI controller, the resulting compensator is called a proportional-plus-integral-plus-derivative PID controller. If we first design a passive lead compensator and then design a passive lag compensator, the resulting compensator is called a Lag-Lead compensator.
+An alternative approach is to improve steady-state error first and then modify the system to improve transient response. In some cases, the subsequent transient-response design partially degrades the previously achieved steady-state improvement. In other cases, transient-response compensation further improves steady-state behavior, potentially resulting in overdesign.
+
+Overdesign is generally acceptable unless it introduces excessive cost, complexity, or implementation constraints. In this document, transient response is addressed first, followed by steady-state error improvement.
+
+Both active and passive compensators may be used. When active derivative and integral compensation are combined, the resulting controller is a proportional–integral–derivative (PID) controller. When passive lead and lag compensators are combined, the resulting network is referred to as a lag–lead compensator.
 
 ---
 
 ### PID Controller Design
 
-The transfer function for a PID controller is
+The transfer function of a PID controller is
 
 $$
 G_c(s)=K_1+\frac{K_2}{s}+K_3s=\frac{K_1s+K_2+K_3s^2}{s}=\frac{K_3\left(s^2+\frac{K_1}{K_3}s+\frac{K_2}{K_3}\right)}{s}
 $$
 
-which has two zeros and a pole at the origin. One zero and the pole at the origin can be designed as the ideal integral compensator; the other zero can be designed as the ideal derivative compensator.
+This controller contains two zeros and a pole at the origin. One zero together with the pole at the origin provides integral action, while the remaining zero provides derivative action.
 
-The block diagram for a PID controller is shown below.
+PID controller design proceeds by first shaping transient response through derivative action and then improving steady-state accuracy through integral action. Controller gains are selected to satisfy both requirements while maintaining overall system stability.
 
-<p align="center">
-  <img src="images/image-26.png" width="400">
-</p>
-
-The design technique, consists of the following steps:
-1. Evaluate the performance of the uncompensated system to determine how much improvement in transient response is required.
-2. Design the PD controller to meet the transient response specifications. The design includes the zero location and the loop gain.
-3. Simulate the system to be sure all requirements have been met.
-4. Redesign if the simulation shows that requirements have not been met.
-5. Design the PI controller to yield the required steady-state error.
-6. Determine the gains, $K_1$, $K_2$, and $K_3$, in the figure above.
-7. Simulate the system to be sure all requirements have been met.
-8. Redesign if simulation shows that requirements have not been met.
+Verification through simulation is required after each design step to ensure that the combined effects of proportional, integral, and derivative action meet the specified performance objectives.
 
 ---
 
 ### Lag-Lead Compensator Design
 
-In a PID controller, we serially combined the concepts of ideal derivative and ideal integral compensation to arrive at the design of a PID controller that improved both the transient response and the steady-state error performance.
+Lag–lead compensation achieves improvement in both transient response and steady-state error using passive networks rather than ideal integrators and differentiators.
 
-In a Lag-Lead compensator, we improve both transient response and the steady-state error by using a lead compensator and a lag compensator rather than the ideal PID.
+The design process begins with lead compensation to shape transient response. After the transient behavior has been established, the remaining steady-state error is evaluated. Lag compensation is then introduced to improve static accuracy while minimizing disturbance to the transient response.
 
-We first design the lead compensator to improve the transient response. Next we evaluate the improvement in steady-state error still required. Finally, we design the lag compensator to meet the steady-state error requirement.
-
-The design technique, consists of the following steps:
-1. Evaluate the performance of the uncompensated system to determine how much improvement in transient response is required.
-2. Design the lead compensator to meet the transient response specifications. The design includes the zero location, pole location, and the loop gain.
-3. Simulate the system to be sure all requirements have been met.
-4. Redesign if the simulation shows that requirements have not been met.
-5. Evaluate the steady-state error performance for the lead-compensated system to determine how much more improvement in steady-state error is required.
-6. Design the lag compensator to yield the required steady-state error.
-7. Simulate the system to be sure all requirements have been met.
-8. Redesign if the simulation shows that requirements have not been met.
+As with PID design, simulation is used to verify that both performance objectives are satisfied. Iteration may be required if interaction between the lag and lead networks produces unintended effects.
 
 ---
 
 ## Notch Filter
 
-If a plant, such as a mechanical system, has high-frequency vibration modes, then a desired closed-loop response may be difficult to obtain. These high-frequency vibration modes can be modeled as part of the plant’s transfer function by pairs of complex poles near the imaginary axis. In a closed-loop configuration, these poles can move closer to the imaginary axis or even cross into the right half-plane, as shown in the figure below.
+Plants that contain lightly damped high-frequency modes-commonly encountered in mechanical systems-can exhibit undesirable vibration behavior. These modes are typically represented in the plant transfer function as complex-conjugate pole pairs located near the imaginary axis at high frequencies.
 
-<p align="center">
-  <img src="images/image-27.png" width="400">
-</p>
+Under closed-loop operation, such poles may migrate closer to the imaginary axis or cross into the right half-plane. When this occurs, high-frequency oscillations or outright instability can be introduced into an otherwise acceptable low-frequency response.
 
-Instability or high-frequency oscillations superimposed over the desired response can result as shown in the figure below.
+These oscillations often appear as high-frequency components superimposed on the desired system behavior.
 
-<p align="center">
-  <img src="images/image-28.png" width="400">
-</p>
+One method for suppressing these dynamics is the introduction of a notch filter in cascade with the plant. The notch filter is designed with zeros placed near the lightly damped high-frequency plant poles, along with additional real poles that ensure proper realizability and stability.
 
-One way of eliminating the high-frequency oscillations is to cascade a notch filter with the plant, as shown in the figure below.\
-The notch filter has zeros close to the low-damping-ratio poles of the plant as well as two real poles. The figure shows that the root locus branch from the high-frequency poles now goes a short distance from the high-frequency pole to the notch filter’s zero.
+With this configuration, the root locus branch associated with the high-frequency plant poles is redirected toward the notch filter zeros. As a result, the influence of the high-frequency modes on the closed-loop dynamics is substantially reduced.
 
-<p align="center">
-  <img src="images/image-29.png" width="400">
-</p>
+The effective pole–zero cancellation significantly attenuates the high-frequency response, allowing subsequent compensator design to focus on achieving desired low-frequency transient and steady-state performance without interference from vibration modes.
 
-The high-frequency response will now be negligible because of the pole-zero cancellation (see figure below). Other cascade compensators can now be designed to yield a desired response.
-
-<p align="center">
-  <img src="images/image-30.png" width="400">
-</p>
+Once the high-frequency dynamics are suppressed, additional cascade compensators may be applied as needed to shape overall system behavior.
 
 ---
 
 # Summary
 
-The table below summarizes cascade compensation. Cascade compensators are used to improve transient response and steady-state error.
+Cascade compensation provides a structured method for modifying system dynamics through the addition of poles and zeros in the forward path.
 
-<p align="center">
-  <img src="images/image-32.png" width="800">
-</p>
+Such compensators may be used to:
 
+* improve transient response
+* reduce steady-state error
+* suppress undesirable dynamics, such as high-frequency vibration modes
+
+By shaping the open-loop pole–zero configuration, cascade compensation enables the closed-loop response to be tailored while preserving the physical plant and its primary design constraints.
+
+---
+| Objective          | Compensator | Form                                                                                      | Notes                                                                                                                 |
+| ------------------ | ----------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Steady-state error | PI          | $K\dfrac{s+z_c}{s}$                                                                     | • Increases system type<br>• Error driven to zero<br>• Zero near origin<br>• Active implementation                    |
+| Steady-state error | Lag         | $K\dfrac{s+z_c}{s+p_c}$                                                                 | • Improves error (not zero)<br>• Pole near origin<br>• Zero slightly left of pole<br>• Passive network                |
+| Transient response | PD          | $K(s+z_c)$                                                                              | • Zero selected by root locus<br>• Improves speed and damping<br>• Noise / saturation risk<br>• Active implementation |
+| Transient response | Lead        | $K\dfrac{s+z_c}{s+p_c}$                                                                 | • Phase lead via pole–zero pair<br>• Pole farther left than zero<br>• Root-locus shaping<br>• Passive network         |
+| Both               | PID         | $K\dfrac{(s+z_{\text{lag}})(s+z_{\text{lead}})}{s}$                                     | • Integral → steady-state<br>• Derivative → transient<br>• Lag zero near origin<br>• Active implementation            |
+| Both               | Lag–Lead    | $K\dfrac{(s+z_{\text{lag}})(s+z_{\text{lead}})}{(s+p_{\text{lag}})(s+p_{\text{lead}})}$ | • Lag improves error<br>• Lead improves transient<br>• Passive implementation                                         |
 ---

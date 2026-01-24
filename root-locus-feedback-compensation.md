@@ -434,11 +434,9 @@ This is precisely 'forward path divided by $1\ +\ $(forward $\times$ composi
 If $H_c(s)=s$ (pure rate feedback) and you take $G_2(s)=1$, this collapses to
 
 $$
-\boxed{}
-$$
-$$
 \boxed{T(s)=\frac{K K_1 G_1(s)G_2(s)}{1\ +\ K_1G_1(s)(K_fs\ +\ K))}}
 $$
+
 ---
 ## Derivation of Nested Feedback Loop Reduction (Inside-Out Method)
 
@@ -452,11 +450,11 @@ We analyze the control system structure shown in the figure above, which contain
 
 ### Signal Definitions (from figure above):
 
-- $ R(s)$: Input
-- $ E(s)$: Output of the first summing junction (error signal)
-- $ X(s)$: Output of block $K$
-- $ U(s)$: Output of block  K_1$
-- $ Y(s)$: Output of block  G_1(s)$
+- R(s)$: Input
+- $E(s)$: Output of the first summing junction (error signal)
+- $X(s)$: Output of block $K$
+- $U(s)$: Output of block  K_1$
+- $Y(s)$: Output of block  G_1(s)$
 - $C(s)$: Final output (output of $G_2(s)$)
 
 ### Block Order:

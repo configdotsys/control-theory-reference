@@ -455,7 +455,7 @@ We analyze the control system structure shown in the figure above, which contain
 - $X(s)$: Output of block $K$
 - $U(s)$: Output of block  $K_1$
 - $Y(s)$: Output of block  $G_1(s)$
-- $C(s)$: Final output (output of $G_2(s)$)
+- $C(s)$: Final output ( output of $G_2(s)$ )
 
 ### Block Order:
 

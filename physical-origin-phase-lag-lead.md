@@ -94,7 +94,7 @@ Lag = time delay in energy response
 > * Almost all of the high-frequency voltage drops across the resistor instead of appearing at the output.
 > * Result $\rightarrow$ the output voltage is greatly reduced (attenuated) for those high frequencies.
 >
-> $\rightarrow\ $ The capacitor effectively shorts (or "shunts") high-frequency signals to ground, bypassing the output.
+> $\rightarrow\$ The capacitor effectively shorts (or "shunts") high-frequency signals to ground, bypassing the output.
 >
 >At low frequencies:
 > * The capacitor's impedance is high $\rightarrow$ it acts like a broken/open connection to ground.

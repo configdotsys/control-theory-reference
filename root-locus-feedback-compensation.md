@@ -323,7 +323,7 @@ $$
 \frac{C(s)}{G(s)}=R(s)\mp C(s)H(s)
 $$
 
-Collect terms in $C(s)$. Bring the $C(s)-term on the right to the left:
+Collect terms in $C(s)$. Bring the $C(s)$-term on the right to the left:
 
 $$
 \frac{C(s)}{G(s)}\,\pm\,C(s)H(s)=R(s)
@@ -428,7 +428,7 @@ $$
 \boxed{\frac{C(s)}{R(s)}=\frac{KK_1G_1(s)G_2(s)}{1\ +\ K_1G_1(s)(K_fH_c(s)\ +\ KG_2(s))}}
 $$
 
-This is precisely 'forward path divided by $1\ +\ $(forward $\times$ composite feedback).'
+This is precisely 'forward path divided by 1 + (forward $times$ composite feedback).'
 
 5. Special case: rate sensor minor-loop\
 If $H_c(s)=s$ (pure rate feedback) and you take $G_2(s)=1$, this collapses to
@@ -450,7 +450,7 @@ We analyze the control system structure shown in the figure above, which contain
 
 ### Signal Definitions (from figure above):
 
-- R(s)$: Input
+- $R(s)$: Input
 - $E(s)$: Output of the first summing junction (error signal)
 - $X(s)$: Output of block $K$
 - $U(s)$: Output of block  $K_1$
@@ -486,7 +486,7 @@ $$
 Y(s) = \frac{K_1 G_1(s)}{1 + K_1 G_1(s) K_f H_c(s)} \cdot X(s)
 $$
 
-> We multiply by $ X(s) $ because this is the input to the inner loop. The feedback term $ K_f H_c(s) \cdot Y(s) $ is already accounted for in the denominator via the feedback formula.
+> We multiply by $X(s)$ because this is the input to the inner loop. The feedback term $K_f H_c(s) \cdot Y(s)$ is already accounted for in the denominator via the feedback formula.
 
 ---
 
@@ -505,7 +505,7 @@ $$
 
 ---
 
-### Step 3: Expand and Group $ C(s) $ Terms
+### Step 3: Expand and Group $C(s)$ Terms
 
 Distribute:
 

@@ -65,13 +65,13 @@ $$
 The new open-loop gain $C(s)H_{comp}(s)$ is
 
 $$
-C(s)H_{comp}(s)=KK_1G_1(s)G_2(s)\,\times\,\frac{K_fH_c(s)+KG_2(s)}{KG_2(s)}
+C(s)H_{comp}(s)=KK_1G_1(s)G_2(s)\ \times\ \frac{K_fH_c(s)+KG_2(s)}{KG_2(s)}
 $$
 
 This gives us the loop-gain expression
 
 $$
-C(s)H_{comp}(s)=K_1G_1(s)\,[K_fH_c(s)+KG_2(s)]
+C(s)H_{comp}(s)=K_1G_1(s)\ [K_fH_c(s)+KG_2(s)]
 $$
 
 Group terms
@@ -85,7 +85,7 @@ Notice that the factor $KG_2(s)$ appearing in the forward path cancels with the 
 As a result, all poles and zeros associated with $G_2(s)$ vanish from the equivalent loop gain.
 
 - All poles/zeros of $G_2(s)$ have vanished.
-- The bracket $\left[K_fH_c(s)\,+\,KG_2(s)\right]$ carries a new pole-zero set (for a rate sensor on position, a real zero at $s=-K/K_f$).
+- The bracket $\left[K_fH_c(s)\ +\ KG_2(s)\right]$ carries a new pole-zero set (for a rate sensor on position, a real zero at $s=-K/K_f$).
 
 If you only look at $C(s)H_{comp}(s)$, it looks exactly as though you had inserted a series compensator in $G(s)$; the root locus is reshaped in the same mathematical way.
 
@@ -121,7 +121,7 @@ ___
 For classical root-locus design the only thing you plot-and the only data you need for the construction rules-is the open-loop transfer function, or loop gain.
 
 $$
-G(s)H(s)\quad\text{where}\,C(s)=G(s)
+G(s)H(s)\quad\text{where}\ C(s)=G(s)
 $$
 
 Everything on a root-locus chart comes from the poles and zeros of $G(s)H(s)$:

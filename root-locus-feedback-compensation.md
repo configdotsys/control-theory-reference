@@ -413,28 +413,28 @@ $$
 3. Composite feedback path (from $C(s)$ back to the summing junction):
 
 $$
-H_{equiv}(s)=\frac{K_fH_c(s)\,+\,KG_2(s)}{KG_2(s)}
+H_{equiv}(s)=\frac{K_fH_c(s)\ +\ KG_2(s)}{KG_2(s)}
 $$
 
 4. Write the closed-loop transfer function $T(s)$
 
 $$
-\frac{C(s)}{R(s)}=\frac{KK_1G_1(s)G_2(s)}{1\,+\,\left[KK_1G_1(s)G_2(s)\right]\,\times\,\frac{K_fH_c(s)\,+\,KG_2(s)}{KG_2(s)}}
+\frac{C(s)}{R(s)}=\frac{KK_1G_1(s)G_2(s)}{1\ +\ \left[KK_1G_1(s)G_2(s)\right]\ \times\ \frac{K_fH_c(s)\ +\ KG_2(s)}{KG_2(s)}}
 $$
 
 Simplifying
 
 $$
-\boxed{\frac{C(s)}{R(s)}=\frac{KK_1G_1(s)G_2(s)}{1\,+\,K_1G_1(s)(K_fH_c(s)\,+\,KG_2(s))}}
+\boxed{\frac{C(s)}{R(s)}=\frac{KK_1G_1(s)G_2(s)}{1\ +\ K_1G_1(s)(K_fH_c(s)\ +\ KG_2(s))}}
 $$
 
-This is precisely 'forward path divided by $1\,+\,$(forward $\times$ composite feedback).'
+This is precisely 'forward path divided by $1\ +\ $(forward $\times$ composite feedback).'
 
 5. Special case: rate sensor minor-loop\
 If $H_c(s)=s$ (pure rate feedback) and you take $G_2(s)=1$, this collapses to
 
 $$
-\boxed{T(s)=\frac{KK_1G_1(s)G_2(s)}{1\,+\,K_1G_1(s)(K_fs\,+\,K))}}
+\boxed{T(s)=\frac{KK_1G_1(s)G_2(s)}{1\ +\ K_1G_1(s)(K_fs\ +\ K))}}
 $$
 ---
 ## Derivation of Nested Feedback Loop Reduction (Inside-Out Method)

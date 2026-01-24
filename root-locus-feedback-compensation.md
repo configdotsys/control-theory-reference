@@ -248,7 +248,7 @@ $$
 | ------------------------------------------- | ------------------ | ---------------------------------------------------------------------- |
 | $K_1G_1(s)$                                 | Yes            | Shape the root locus exactly as before.                                |
 | $G_2(s)$                                    | No (cancelled) | Replaced by the bracket term.                                          |
-| New bracket $\bigl[K_fH_c(s)+KG_2(s)\bigr]$ | Yes            | Introduces the “free” zero (and any poles/zeros contributed by $H_c$. |
+| New bracket $\bigl[K_fH_c(s)+KG_2(s)\bigr]$ | Yes            | Introduces the “free” zero (and any poles/zeros contributed by $H_c$ |
 ---
 
 So after the minor-loop reduction you are designing with a loop-gain model that contains
@@ -434,7 +434,10 @@ This is precisely 'forward path divided by $1\ +\ $(forward $\times$ composi
 If $H_c(s)=s$ (pure rate feedback) and you take $G_2(s)=1$, this collapses to
 
 $$
-\boxed{T(s)=\frac{KK_1G_1(s)G_2(s)}{1\ +\ K_1G_1(s)(K_fs\ +\ K))}}
+\boxed{}
+$$
+$$
+\boxed{T(s)=\frac{K K_1 G_1(s)G_2(s)}{1\ +\ K_1G_1(s)(K_fs\ +\ K))}}
 $$
 ---
 ## Derivation of Nested Feedback Loop Reduction (Inside-Out Method)

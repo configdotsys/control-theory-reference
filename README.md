@@ -6,7 +6,7 @@ The material is not intended to be a tutorial, textbook, or original theoretical
 
 Notes are organized for clarity and long-term reuse alongside modeling, simulation, and embedded control projects.
 
-## Disclaimer
+#### Disclaimer
 
 This repository contains personal engineering notes and reference material
 compiled for self-study and long-term technical review.

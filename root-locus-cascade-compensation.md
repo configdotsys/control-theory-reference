@@ -1,5 +1,12 @@
 # Root Locus Design - Cascade Compensation
 
+*Author: Percival Segui*\
+*Prepared as an independent technical reference.*
+
+*Engineering notes compiled and derived from standard classical control theory.*
+
+---
+
 Systems that apply the error signal directly to the plant implement **proportional control**.
 
 Systems that apply the time integral of the error implement **integral control**.

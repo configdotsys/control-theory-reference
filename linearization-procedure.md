@@ -1,8 +1,16 @@
 # Tangent-Line Linearization Procedure
 
-*Use this when you want to approximate a nonlinear differential equation with a linear one near a known operating point.*
+*Author: Percival Segui*
 
-*This is tangent-line linearization, not necesarily equilibrium linearization.*
+*Prepared as an independent technical reference.*
+
+---
+
+## Purpose
+
+Use this when you want to approximate a nonlinear differential equation with a linear one near a known operating point.
+
+This is tangent-line linearization, not necesarily equilibrium linearization.
 
 ---
 

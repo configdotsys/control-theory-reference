@@ -72,7 +72,9 @@ $$
 
 ---
 
-<img src="images/response_curve.png" alt="First-order response curve" style="!display:block; margin-left:auto; margin-right:auto;" width="400">
+<p align="center">
+  <img src="images/response-curve.png" width="600">
+</p>
 
 ---
 
@@ -137,7 +139,9 @@ These poles:
 
 ---
 
-<img src="images/pole_location.png" alt="Pole location diagram for 2nd-order system" style="!display:block; margin-left:auto; margin-right:auto;" width="400">
+<p align="center">
+  <img src="images/pole_location.png.png" width="600">
+</p>
 
 ---
 
@@ -209,7 +213,9 @@ $$
 
 ---
 
-<img src="images/2nd_order_response.png" alt="Pole map with performance lines" style="!display:block; margin-left:auto; margin-right:auto;" width="500">
+<p align="center">
+  <img src="images/2nd-order-response.png" width="600">
+</p>
 
 ---
 
@@ -264,7 +270,7 @@ This diagram shows:
 * **Radial lines** = constant $\zeta$ = constant **percent overshoot**
 
 ---
-<img src="images/2nd_order_pole_map.png" alt="Pole map with performance lines" style="!display:block; margin-left:auto; margin-right:auto;" width="400">
+<img src="images/2nd-order-pole-map.png" alt="Pole map with performance lines" style="!display:block; margin-left:auto; margin-right:auto;" width="400">
 
 ---
 

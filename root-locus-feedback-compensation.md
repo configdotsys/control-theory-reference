@@ -433,7 +433,6 @@ Factor out $K_f$:
 
 $$
 K_f s + K = K_f\left(s + \frac{K}{K_f}\right)
-
 $$
 
 Now substitute that back into the loop gain:
@@ -480,8 +479,8 @@ $$
 
 That is a constant. A constant factor does not introduce a zero. So:
 
-* $H_c(s)=1 $ $\rightarrow $ no (s)-term $\rightarrow$ no zero
-* $H_c(s)=s $ $\rightarrow $ bracket contains an (s)-term $\rightarrow$ zero appears after factoring
+* $H_c(s)=1$ $\rightarrow$ no (s)-term $\rightarrow$ no zero
+* $H_c(s)=s$ $\rightarrow$ bracket contains an (s)-term $\rightarrow$ zero appears after factoring
 
 The zero exists because the rate sensor contributes the factor (s) inside the minor-loop branch.
 
@@ -771,7 +770,6 @@ gives
 
 $$
 \boxed{T(s)=\frac{K K_1 G_1(s) G_2(s)}{1 + K K_1 G_1(s) G_2(s)}}
-
 $$
 
 This is the closed-loop transfer function of the original system before the rate-feedback minor loop is introduced.
@@ -896,7 +894,7 @@ We analyze the control system structure shown in the figure above, which contain
 - $X(s)$: Output of block $K$
 - $U(s)$: Output of block $K_1$
 - $Y(s)$: Output of block $G_1(s)$
-- $C(s)$: Final output (output of $G_2(s)$)
+- $C(s)$: Final output ( output of $G_2(s)$ )
 
 ### Block Order:
 

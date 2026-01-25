@@ -15,7 +15,7 @@ $$
 $$
 
 Where:
-- $f(x)$ is **nonlinear** (i.e., $\cos x$, $ ln x$, $e^x$, etc.)
+- $f(x)$ is **nonlinear** (i.e., $\cos x$, $ln x$, $e^x$, etc.)
 - You want to linearize near a point $x_0$
 
 ---
@@ -42,7 +42,7 @@ $$
 \delta x(t) = x(t) - x_0
 $$
 
-This represents small changes around $ x_0 $.
+This represents small changes around $x_0 $.
 
 ---
 
@@ -68,7 +68,7 @@ $$
 
 ---
 
-### Step 5: Subtract Off the Constant $ f(x_0) $
+### Step 5: Subtract Off the Constant $f(x_0) $
 
 Move the constant term to the other side:
 

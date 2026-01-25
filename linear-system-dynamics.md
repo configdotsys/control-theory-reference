@@ -140,7 +140,7 @@ These poles:
 ---
 
 <p align="center">
-  <img src="images/pole_location.png.png" width="600">
+  <img src="images/pole_location.png" width="600">
 </p>
 
 ---
@@ -295,6 +295,5 @@ This diagram shows:
 * Natural frequency varies → **faster or slower response**
 
 ---
-<img src="images/pole_movement.png" alt="Visual of pole movement effects" style="!display:block; margin-left:auto; margin-right:auto;" width="600">
 
 ---

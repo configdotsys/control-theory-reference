@@ -140,7 +140,7 @@ These poles:
 ---
 
 <p align="center">
-  <img src="images/pole_location.png" width="600">
+  <img src="images/pole_location.png" width="350">
 </p>
 
 ---

@@ -276,24 +276,26 @@ This diagram shows:
 
 ### What Happens When Poles Move
 
-**1. Vertically (constant $\sigma$)**
+**1. Vertically ( constant $\sigma$ )**
 
-* Real part fixed: envelope is fixed as the frequency changes → **same decay rate, essentially the same settling time**
-* Imaginary part: frequency varies → **more or less oscillation**
-* Rise time: as overshoot increases → **rise time decreases**
-
-**2. Horizontally (constant $\omega_d$)**
-
-* Imaginary part fixed: constant frequency → **envelope changes**
-* Real part: decay rate and settling time varies → **more or less damping**
-* Peak time: as the imaginary part stays fixed → **peak time is constant**
-
-**3. Radially (constant $\zeta$)**
-
-* Shape of response preserved
-* All timing shrinks or stretches
-* Natural frequency varies → **faster or slower response**
+* Real part fixed $\rightarrow$ exponential envelope is fixed $\rightarrow$ **essentially the same decay rate and settling time**
+* Imaginary part varies $\rightarrow$ **more or less oscillation**
+* As $\omega_d$ increases $\rightarrow$ oscillations occur faster → **rise time generally decreases**
 
 ---
+
+**2. Horizontally ( constant $\omega_d$ )**
+
+* Imaginary part fixed $\rightarrow$ oscillation frequency is fixed
+* Real part varies $\rightarrow$ envelope changes → **more or less damping**
+* Peak time depends only on $\omega_d$ $\rightarrow$ **peak time remains constant**
+
+---
+
+**3. Radially ( constant $\zeta$ )**
+
+* Damping ratio fixed $\rightarrow$ **shape of response preserved**
+* Poles move inward or outward $\rightarrow$ all timing scales
+* Natural frequency varies $\rightarrow$ **faster or slower response**
 
 ---

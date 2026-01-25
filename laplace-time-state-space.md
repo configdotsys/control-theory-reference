@@ -1,5 +1,11 @@
 # Solving State-Space Systems: Time-Domain vs Laplace-Domain
 
+*Author: Percival Segui*
+
+*Prepared as an independent technical reference.*
+
+---
+
 ## Switching Between Time-Domain and Laplace-Domain
 
 | Concept           | Time-Domain                       | Laplace-Domain                |

@@ -1,5 +1,11 @@
 # Control Theory First- and Second-Order Linear System Dynamics
 
+*Author: Percival Segui*
+
+*Prepared as an independent technical reference.*
+
+---
+
 ## 1. First-Order System
 
 ### Standard Transfer Function

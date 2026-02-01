@@ -9,3 +9,9 @@ Notes are organized for clarity and long-term reuse alongside modeling, simulati
 #### Disclaimer
 
 This repository contains personal study and reference notes and is not intended for reuse or redistribution.
+
+---
+
+*Author: Percival Segui*
+
+*Independent engineering technical reference*

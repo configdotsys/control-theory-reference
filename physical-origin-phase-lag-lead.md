@@ -10,7 +10,7 @@
 Phase is a measure of timing between input and output of a system. If you input a pure sinusoid $x(t) = A \cos(\omega t)$, the system responds with:
 
 $$
-y(t) = B \cos(\omega t + \phi)
+y(t) = B\ \cos(\omega t + \phi)
 $$
 
 * If $\phi > 0$: Phase lead (output leads input)

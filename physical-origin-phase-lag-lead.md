@@ -182,7 +182,7 @@ Thus, velocity leads position by $90^\circ$.
 
 Physically, velocity reaches zero at the moment position is at a maximum or minimum. This occurs because slopes vanish before extrema occur - the rate of change goes to zero before the accumulated quantity reverses direction\*.
 
-## \*An accumulated quantity cannot reach an extremum until its rate of change has already gone to zero, so the rate necessarily changes earlier in time.
+#### \*An accumulated quantity cannot reach an extremum until its rate of change has already gone to zero, so the rate necessarily changes earlier in time.
 
 This phase lead does not imply prediction or violation of causality. It arises because velocity reflects instantaneous change, while position reflects accumulated history.
 
